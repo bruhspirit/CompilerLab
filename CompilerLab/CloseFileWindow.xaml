@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Content="Сохранить изменения" Grid.ColumnSpan="2" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Button Grid.Row="2" Grid.Column="0" Content="Сохранить" FontSize="15"  VerticalAlignment="Center" Background="Transparent" Click="SaveButton"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Content="Не сохранять" FontSize="15"  VerticalAlignment="Center" Background="Transparent" Click="CancelButton" ></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="Не сохранять" FontSize="15"  VerticalAlignment="Center" Background="Transparent" Click="CancelButton"></Button>
 
 
     </Grid>

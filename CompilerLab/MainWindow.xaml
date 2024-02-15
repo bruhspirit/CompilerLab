@@ -20,7 +20,7 @@
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
-            <ColumnDefinition Width="20*" MaxWidth="40" MinWidth="20"/>
+            <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="20"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
@@ -29,53 +29,55 @@
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
-            <ColumnDefinition Width="330*"/>
+            <ColumnDefinition Width="70*" MaxWidth="70" MinWidth="40"/>
+            <ColumnDefinition Width="70*" MaxWidth="70" MinWidth="40"/>
+            <ColumnDefinition Width="133*"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.ColumnSpan="13" Margin="0,0,0,1">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Создать" Click="CreateFileDialog"></MenuItem>
-                <MenuItem Header="Открыть" Click="OpenFileDialog"></MenuItem>
+        <Menu Grid.Row="0" Grid.ColumnSpan="15" Margin="0,0,0,1">
+            <MenuItem Header="Файл" Name="FileOption">
+                <MenuItem Header="Создать" Click="CreateFileDialog" Name="CreateOption"></MenuItem>
+                <MenuItem Header="Открыть" Click="OpenFileDialog" Name="OpenOption"></MenuItem>
                 <MenuItem Header="Сохранить" Click="SaveFileDialog" IsEnabled="False" Name ="SaveOption"></MenuItem>
                 <MenuItem Header="Сохранить как" Click="SaveAsFileDialog" IsEnabled="False" Name="SaveAsOption"></MenuItem>
                 <MenuItem Header="Выход" Click="CloseFile" Name ="CloseFileOption" IsEnabled="False"></MenuItem>
             </MenuItem>
             <MenuItem Header="Правка" Name="EditOption" IsEnabled="False">
-                <MenuItem Header="Отменить" Click="Undo"></MenuItem>
-                <MenuItem Header="Повторить" Click="Redo"></MenuItem>
-                <MenuItem Header="Вырезать" Click="Cut"></MenuItem>
-                <MenuItem Header="Копировать" Click="Copy"></MenuItem>
-                <MenuItem Header="Вставить" Click="Paste"></MenuItem>
-                <MenuItem Header="Удалить" Click="Delete"></MenuItem>
-                <MenuItem Header="Выделить все" Click="SelectAll"></MenuItem>
+                <MenuItem Header="Отменить" Click="Undo" Name="UndoOption"></MenuItem>
+                <MenuItem Header="Повторить" Click="Redo" Name="RedoOption"></MenuItem>
+                <MenuItem Header="Вырезать" Click="Cut" Name="CutOption"></MenuItem>
+                <MenuItem Header="Копировать" Click="Copy" Name="CopyOption"></MenuItem>
+                <MenuItem Header="Вставить" Click="Paste" Name="PasteOption"></MenuItem>
+                <MenuItem Header="Удалить" Click="Delete" Name="DeleteOption"></MenuItem>
+                <MenuItem Header="Выделить все" Click="SelectAll" Name="SelectAllOption"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Текст">
-                <MenuItem Header="Постановка задачи"></MenuItem>
-                <MenuItem Header="Грамматика"></MenuItem>
-                <MenuItem Header="Классификация грамматики"></MenuItem>
-                <MenuItem Header="Метод анализа"></MenuItem>
-                <MenuItem Header="Диагностика и нейтрализация ошибок"></MenuItem>
-                <MenuItem Header="Текстовый пример"></MenuItem>
-                <MenuItem Header="Список литературы"></MenuItem>
-                <MenuItem Header="Исходный код программы"></MenuItem>
+            <MenuItem Header="Текст" Name="TextOption">
+                <MenuItem Header="Постановка задачи" Name="Formulation"></MenuItem>
+                <MenuItem Header="Грамматика" Name="Grammatic"></MenuItem>
+                <MenuItem Header="Классификация грамматики" Name="GrammaticClass"></MenuItem>
+                <MenuItem Header="Метод анализа" Name="AnalysMethod"></MenuItem>
+                <MenuItem Header="Диагностика и нейтрализация ошибок" Name="Troubleshooter"></MenuItem>
+                <MenuItem Header="Текстовый пример" Name="Example"></MenuItem>
+                <MenuItem Header="Список литературы" Name="Literature"></MenuItem>
+                <MenuItem Header="Исходный код программы" Name="SourceCode"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Справка">
-                <MenuItem Header="Вызов справки"></MenuItem>
-                <MenuItem Header="О программе"></MenuItem>
+            <MenuItem Header="Справка" Name="Help">
+                <MenuItem Header="Вызов справки" Name="HelpOption" Click="CallHelp"></MenuItem>
+                <MenuItem Header="О программе" Name="AboutProgram"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Настройки">
-                <MenuItem Header="Язык">
-                    <MenuItem Header="Русский"></MenuItem>
-                    <MenuItem Header="English"></MenuItem>
+            <MenuItem Header="Настройки" Name="Settings">
+                <MenuItem Header="Язык" Name="Language">
+                    <MenuItem Header="Русский" Click="SwitchToRussian"></MenuItem>
+                    <MenuItem Header="English" Click="SwitchToEnglish"></MenuItem>
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Пуск" Name="RunOption" IsEnabled="False"></MenuItem>
         </Menu>
 
-        <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Создать файл" Click="CreateFileDialog">
+        <Button Grid.Column="0" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Создать файл" Click="CreateFileDialog" Name="CreateFileButton">
             <Image Source="Assets/file-icon.png" MaxHeight="26" MaxWidth="26"/>
         </Button>
-        <Button Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"  Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Открыть файл" Click="OpenFileDialog">
+        <Button Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"  Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Открыть файл" Click="OpenFileDialog" Name="OpenFileButton">
             <Image Source="Assets/folder-icon.png" MaxHeight="26" MaxWidth="26"></Image>
         </Button>
         <Button Grid.Column="2" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Сохранить файл" Click="SaveFileDialog" Name="SaveButton" IsEnabled="False">
@@ -93,39 +95,79 @@
         <Button Grid.Column="7" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Вырезать" Name="CutButton" IsEnabled="False" Click="Cut">
             <Image Source="Assets/cut-icon.png" MaxHeight="26" MaxWidth="26"></Image>
         </Button>
-        <Button Grid.Column="8" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Вставить" Name="PasteButton" IsEnabled="False" Click="Paste"> 
+        <Button Grid.Column="8" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Вставить" Name="PasteButton" IsEnabled="False" Click="Paste">
             <Image Source="Assets/paste-icon.png" MaxHeight="26" MaxWidth="26"></Image>
         </Button>
         <Button Grid.Column="9" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Пуск" IsEnabled="False" Name ="RunButton">
             <Image Source="Assets/run-icon.png"  MaxHeight="26" MaxWidth="26"></Image>
         </Button>
-        <Button Grid.Column="10" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Справка">
+        <Button Grid.Column="10" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="Справка" Name="HelpButton">
             <Image Source="Assets/help-icon.png"  MaxHeight="26" MaxWidth="26"></Image>
         </Button>
-        <Button Grid.Column="11" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="О программе">
+        <Button Grid.Column="11" Grid.Row="1" Margin="5,5,5,5" Cursor="Hand" Background="Transparent" BorderThickness="0" ToolTip="О программе" Name="AboutProgramButton">
             <Image Source="Assets/info-icon.png"  MaxHeight="26" MaxWidth="26"></Image>
         </Button>
-        
-        <GridSplitter Grid.Row="3" Grid.ColumnSpan="13" Height="3" HorizontalAlignment="Stretch" Background="Black"></GridSplitter>
-        
-        
-            <avalonEdit:TextEditor
+
+        <GridSplitter Grid.Row="3" Grid.ColumnSpan="15" HorizontalAlignment="Stretch" Background="Black" Margin="0,6,0,6"/>
+
+
+        <avalonEdit:TextEditor
             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
             Name="Input"
             FontFamily="Consolas"
             SyntaxHighlighting="C++"
             FontSize="10pt"
             Grid.Row="2"
-            Grid.ColumnSpan="13"
+            Grid.ColumnSpan="15"
             IsEnabled="False"
             ShowLineNumbers="True"
+            Drop="DropFile"
             />
 
 
-        <ScrollViewer  Grid.Row="4" Grid.ColumnSpan="13" CanContentScroll="True">
+        <ScrollViewer  Grid.Row="3" Grid.ColumnSpan="15" CanContentScroll="True" Margin="0,15,0,0" Grid.RowSpan="2">
+            <DataGrid Name="Output"  Grid.Row="3" Grid.ColumnSpan="15">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="10*"></DataGridTextColumn>
+                    <DataGridTextColumn Width="100*"></DataGridTextColumn>
+                    <DataGridTextColumn  Width="10*"></DataGridTextColumn>
+                    <DataGridTextColumn  Width="10*"></DataGridTextColumn>
+                    <DataGridTextColumn  Width="50*"></DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.Items>
+                </DataGrid.Items>
+            </DataGrid>
         </ScrollViewer>
 
-        
+        <ComboBox Name="InputFont" Grid.Row="1" Grid.Column="12" Margin="10,10,10,10" ToolTip="Размер шрифта в окне редактирования" SelectedIndex="1" SelectionChanged="InputFont_SelectionChanged">
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="14"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="30"></ComboBoxItem>
+            <ComboBoxItem Content="40"></ComboBoxItem>
+            <ComboBoxItem Content="50"></ComboBoxItem>
+            <ComboBoxItem Content="60"></ComboBoxItem>
+            <ComboBoxItem Content="70"></ComboBoxItem>
+            <ComboBoxItem Content="80"></ComboBoxItem>
+            <ComboBoxItem Content="90"></ComboBoxItem>
+            <ComboBoxItem Content="100"></ComboBoxItem>
+        </ComboBox>
 
+        <ComboBox Name="OutputFont" Grid.Row="1" Grid.Column="13" Margin="10,10,10,10" ToolTip="Размер шрифта в окне вывода" SelectedIndex="1" SelectionChanged="OutputFont_SelectionChanged">
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="14"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="30"></ComboBoxItem>
+            <ComboBoxItem Content="40"></ComboBoxItem>
+            <ComboBoxItem Content="50"></ComboBoxItem>
+            <ComboBoxItem Content="60"></ComboBoxItem>
+            <ComboBoxItem Content="70"></ComboBoxItem>
+            <ComboBoxItem Content="80"></ComboBoxItem>
+            <ComboBoxItem Content="90"></ComboBoxItem>
+            <ComboBoxItem Content="100"></ComboBoxItem>
+        </ComboBox>
+
+        <Label Name="Condition" Grid.Row="1" Grid.Column="16" Content="Ожидание" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        
     </Grid>
 </Window>
