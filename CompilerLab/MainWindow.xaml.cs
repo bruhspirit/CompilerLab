@@ -29,6 +29,7 @@ namespace CompilerLab
             InitializeComponent();
         }
         private Window1 helpwindow = new Window1();
+        private About AboutWindow = new About();
         private string condition = "Ожидание";
         private string lang = "rus";
         private string filename = "";
@@ -437,6 +438,13 @@ namespace CompilerLab
                 condition = "Редактирование";
                 Condition.Content = condition;
             }
+            AboutWindow.Name.Content = "Текстовый редактор";
+            AboutWindow.Developed.Text = "Разработан";
+            AboutWindow.Student.Text = "Студентом НГТУ";
+            AboutWindow.Fac.Text = "Факультета АВТФ";
+            AboutWindow.Group.Text = "Группы АВТ-114";
+            AboutWindow.Me.Text = "Толмачевым В.Е.";
+            AboutWindow.City.Text = "Новосибирск 2023";
         }
         private void SwitchToEnglish(object sender, RoutedEventArgs e)
         {
@@ -506,6 +514,7 @@ namespace CompilerLab
             helpwindow.InstPanel.Content = "Toolbar";
             helpwindow.Toolblock.Text = "Contains functions for working with text, as well as buttons to start, access help and information about the program and a window for changing the font size in the program. When hovering over elements, the user can see tips describing the actions assigned to the buttons";
             lang = "eng";
+          
             if (condition == "Ожидание")
             {
                 condition = "Waiting";
@@ -521,6 +530,14 @@ namespace CompilerLab
                 condition = "Editing";
                 Condition.Content = condition;
             }
+            AboutWindow.Name.Content = "Text Editor";
+            AboutWindow.Developed.Text = "Developed by";
+            AboutWindow.Student.Text = "NSTU student";
+            AboutWindow.Fac.Text = "AVTF Faculty";
+            AboutWindow.Group.Text = "AVT-114";
+            AboutWindow.Me.Text = "Tolmachev V.E.";
+            AboutWindow.City.Text = "Novosibirsk 2023";
+
         }
 
         private void CallHelp(object sender, RoutedEventArgs e)
@@ -529,9 +546,10 @@ namespace CompilerLab
             
         }
 
-        private void DropFile(object sender, DragEventArgs e)
+        private void ShowAbout(object sender, RoutedEventArgs e)
         {
-            
+              
+            AboutWindow.Show();
         }
 
     }
